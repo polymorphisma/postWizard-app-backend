@@ -2,7 +2,6 @@ import boto3
 import os
 from dotenv import load_dotenv
 from langchain.llms.bedrock import Bedrock
-from langchain.embeddings import BedrockEmbeddings
 import json
 
 load_dotenv()

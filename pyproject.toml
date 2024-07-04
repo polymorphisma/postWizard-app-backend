@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ama"
+name = "postWizard-backend"
 version = "0.1.0"
 description = ""
 authors = ["polymorphisma <shrawansunar.6@gmail.com>"]
