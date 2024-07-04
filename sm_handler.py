@@ -1,7 +1,7 @@
 from social_media_handler.twitter import Twitter
 from social_media_handler.linkedin import Linkedin
 
-from ai.ama_ai_aws import main as ai_text_generator
+from ai.ama_ai_google import main as ai_text_generator
 
 twitter_obj = Twitter()
 linkedin_obj = Linkedin()
