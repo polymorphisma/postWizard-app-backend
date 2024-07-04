@@ -1,0 +1,186 @@
+body {
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e9ecef;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    position: fixed; /* Keep header fixed */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure header is on top */
+}
+
+.logo {
+    height: 50px;
+    margin-left: 20px;
+    border-radius: 50%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 800px;
+    margin: 120px auto 20px; /* Adjust margin-top to account for the fixed header */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    height: 80%;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.photo-upload {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#photoInput {
+    margin-bottom: 10px;
+}
+
+#photoInput:hover {
+    background-color: #007bff;
+    color: white; /* Add text color change on hover */
+}
+
+#photoContainer {
+    max-width: 100%;
+    max-height: 300px;
+    border: 0.5px solid #000;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 10px;
+
+}
+#photoContainer img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 10px;
+}
+
+.text-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+textarea {
+    /* width: 100%; */
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+
+#postButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#uploadStatus {
+    display: none; /* Hidden by default */
+    font-size: 30px;
+    color: blue;
+    font-weight: bold;
+    margin-top: 50px; /* Adjust margin as needed for spacing */
+    text-align: center; /* Center the text */
+}
+
+#uploadStatus.visible {
+    display: block;
+}
+/* Additional styles for the delete button */
+.photo-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+
+.photo-wrapper img {
+    max-width: 500px;
+    max-height: 500px;
+}
+
+/* .photo-wrapper button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: red;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 5px;
+} */
+
+.photo-wrapper button{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.social-media-selection {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-media-selection label {
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.social-media-selection input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.fa-linkedin, .fa-twitter {
+    margin-right: 5px;
+    font-size: 24px; /* Adjust the size as needed */
+}

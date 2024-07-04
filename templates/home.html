@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.M.A</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <!-- <img src="../static/ama.png" alt="A.M.A Logo" class="logo"> -->
+        <h1>Adex Media Automator</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="photo-upload">
+                <input type="file" id="photoInput" accept="image/*" multiple>
+                <div id="photoContainer"></div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="text-content">
+                <textarea id="caption" placeholder="Write your caption here..."></textarea>
+                <!-- <textarea id="hashtags" placeholder="Write your hashtags here..."></textarea> -->
+            </div>
+        </div>
+        <button id="postButton">Post</button>
+         <!-- Social media selection section -->
+         <div class="social-media-selection">
+            <label for="linkedinCheckbox">
+                <input type="checkbox" id="linkedinCheckbox" value="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+                LinkedIn 
+            <label for="twitterCheckbox">
+                <input type="checkbox" id="twitterCheckbox" value="Twitter">
+                <i class="fab fa-twitter"></i>
+                Twitter
+            </label>
+        </div>
+
+
+    </main>
+    <!-- Uploading status message -->
+    <div id="uploadStatus" style="display: none; color: blue; font-weight: bold; margin-bottom: 50px;">Uploading...</div>
+    <div id="linkContainer"></div>
+    <script src="../static/script.js"></script>
+</body>
+</html>
