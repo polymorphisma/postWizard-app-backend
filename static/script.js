@@ -113,9 +113,9 @@ document.getElementById('postButton').addEventListener('click', function (event)
     const uploadStatus = document.getElementById('uploadStatus');
     uploadStatus.style.display = 'block';
 
-    console.log(`${window.location.origin}/upload`)
+    console.log(`${window.location.origin}/api/v1/ai/upload`)
     // Make the POST request to the server
-    fetch(`${window.location.origin}/upload`, {
+    fetch(`${window.location.origin}/api/v1/ai/upload`, {
         method: 'POST',
         body: formData,
     })
