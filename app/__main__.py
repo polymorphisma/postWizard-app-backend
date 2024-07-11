@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 import uvicorn
+from app.run_migration import run_migration
 
 from app.routers.api_router import api_router
 
@@ -20,6 +21,9 @@ app.add_middleware(
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="template")
 
+# Run migrations before starting the app
+run_migration()
+
 
 @app.get("/")
 async def index(request: Request):
@@ -34,7 +38,7 @@ if __name__ == "__main__":
         "app.__main__:app",  # Changed from "__main__:app" to "app.__main__:app"
         loop="asyncio",
         host="0.0.0.0",
-        port=8000,
+        port=8080,
         # reload=True,
         workers=5,
         env_file="../.env",
