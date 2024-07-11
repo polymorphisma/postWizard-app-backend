@@ -45,7 +45,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            cd work
+            cd postWizard-backend
             docker compose down
             docker pull polymorphisma/postwizard:latest
             docker compose up -d
