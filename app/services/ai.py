@@ -42,4 +42,5 @@ class AiService:
                 return JSONResponse(content={"error": str(e)}, status_code=500)
             file_list.append(save_file)
         value = sm_handler_obj.entry_point(socialMedia, file_list, context)
+        print(value)
         return JSONResponse(value, status_code=200)

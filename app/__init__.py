@@ -7,3 +7,6 @@ __author__ = ""
 # PATCH version when you make backwards compatible bug fixes.
 # Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 # For more information, see https://semver.org/.
+
+
+from app import models

@@ -38,8 +38,8 @@ if __name__ == "__main__":
         "app.__main__:app",  # Changed from "__main__:app" to "app.__main__:app"
         loop="asyncio",
         host="0.0.0.0",
-        port=8080,
-        # reload=True,
-        workers=5,
+        port=3000,
+        reload=True,
+        # workers=5,
         env_file="../.env",
     )

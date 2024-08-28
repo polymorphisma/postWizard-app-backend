@@ -1,4 +1,4 @@
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, status, Request
 from fastapi.responses import JSONResponse
 from fastapi.security import OAuth2PasswordRequestForm
 
@@ -23,16 +23,16 @@ class UserService:
         user_exist = await UserService.user_email_exists(session, user_data.email)
 
         if user_exist:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="User with the given email already exists!!!",
+            return JSONResponse(
+                content={"success": False, "message": "User with the given email already exists!!!"},
+                status_code=status.HTTP_200_OK,
             )
 
         user_data.password = UtilsService.get_password_hash(user_data.password)
         new_user = await user.UserDao(session).create(user_data.model_dump())
         logger.info(f"New user created successfully: {new_user}!!!")
         return JSONResponse(
-            content={"message": "User created successfully"},
+            content={"message": "User created successfully", "success": True},
             status_code=status.HTTP_201_CREATED,
         )
 
@@ -49,12 +49,13 @@ class UserService:
         return _user if _user else None
 
     @staticmethod
-    async def login(form_data: OAuth2PasswordRequestForm, session: AsyncSession) -> Token:
-        _user = await UserService.authenticate_user(session, form_data.username, form_data.password)
+    async def login(request: Request, session: AsyncSession) -> Token:
+        body = await request.json()
+        _user = await UserService.authenticate_user(session, body.get("username"), body.get("password"))
         if not _user:
-            raise HTTPException(
+            raise JSONResponse(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Incorrect email or password",
+                content={"message": "Incorrect email or password", "success": False},
             )
 
         access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -62,8 +63,10 @@ class UserService:
         token_data = {
             "access_token": access_token,
             "token_type": "Bearer",
+            "success": True,
+            "message": "User authenticated."
         }
-        return Token(**token_data)
+        return JSONResponse(content=token_data, status_code=status.HTTP_200_OK)
 
     @staticmethod
     async def get_current_user(
