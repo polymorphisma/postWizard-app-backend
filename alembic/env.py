@@ -40,4 +40,5 @@ def main():
         logger.error("Error running migrations", exc_info=True)
 
 
-main()
+if __name__ == "__main__":
+    main()

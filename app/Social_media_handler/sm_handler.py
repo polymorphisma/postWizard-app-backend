@@ -33,6 +33,7 @@ class Sm_handler:
 
             response = self.sm[meth](image_path, text)
             response['method'] = meth
+            response['generated_text'] = text
             return_value.append(response)
 
         return return_value

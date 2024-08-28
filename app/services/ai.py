@@ -9,6 +9,7 @@ import os
 import shutil
 
 from app.Social_media_handler.sm_handler import Sm_handler
+from app.daos.ai import AiDao
 
 sm_handler_obj = Sm_handler()
 ROOT_DIR = os.getcwd()
@@ -19,7 +20,8 @@ image_director = os.path.join(ROOT_DIR, 'image')
 
 class AiService:
     @staticmethod
-    def upload(session: AsyncSession, images: List[UploadFile] = File(...), context: str = Form(...), socialMedia: str = Form(...)):
+    async def upload(session: AsyncSession, images: List[UploadFile] = File(...), context: str = Form(...), socialMedia: str = Form(...)):
+        # ai_dao = AiDao(session)
         if socialMedia == '':
             return JSONResponse({"success": False, "message": "Please choose one social media"})
 
@@ -43,4 +45,14 @@ class AiService:
             file_list.append(save_file)
         value = sm_handler_obj.entry_point(socialMedia, file_list, context)
         print(value)
+        # _create = {
+        #     "file_path": ",".join(file_list),
+        #     "upload_options": ",".join(socialMedia),
+        #     "context": context,
+        #     "generated_text": value[0].get("generated_text"),
+        #     "uploaded_link": value[0].get("message")
+        # }
+
+        # await ai_dao.create(_create)
+
         return JSONResponse(value, status_code=200)
