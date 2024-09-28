@@ -39,7 +39,7 @@ if __name__ == "__main__":
         loop="asyncio",
         host="0.0.0.0",
         port=3000,
-        reload=True,
-        # workers=5,
+        # reload=True,
+        workers=5,
         env_file="../.env",
     )
